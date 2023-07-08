@@ -44,7 +44,7 @@ app.post("/todos", (req, res) => {
     todos.push(todo);
 
     fs.writeFile("todos.json", JSON.stringify(todos), (data) => {
-      res.status(201).send({ id: id });
+      res.status(201).send(todo);
     });
   });
 });
@@ -97,6 +97,10 @@ app.delete("/todos/:id", (req, res) => {
     }
   });
 });
+
+// app.get("/", (req, res) => {
+//   res.sendFile(__dirname + "/index.html");
+// });
 
 app.use((req, res, next) => {
   res.status(404).send();
